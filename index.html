@@ -56,7 +56,7 @@
                 $(".prev").click(function() { return swapImage(false); });
                 $(".next").click(function() { return swapImage(true); });
                 $(".info").click(function() { $("#info").toggle(); return false; });
-                $(".sizes").click(function() { $("#sizes").show(); return false; });
+                $(".sizes, .link").click(function() { $("#redirect").toggle(); });
 
                 // key bindings
                 $(window).keydown(function(event) {
@@ -382,6 +382,7 @@
                 currentImage = parseInt(thumb.attr("photoIndex"));
 
                 $(".link").attr("href", "http://flickr.com/photos/"+myId+"/"+photoId);
+                $(".sizes").attr("href", "http://flickr.com/photos/"+myId+"/"+photoId+"/sizes/l/");
 
                 $("#viewer-image-container").css("margin-top", $(window).scrollTop() + 50);
                 $("#overlay").show();
@@ -969,6 +970,41 @@
                 background-color: #ddd;
             }
 
+            #redirect {
+              z-index: 100;
+              position: absolute;
+              background-color: #eee;
+
+              height: 40px;
+              padding-top: 30px;
+              line-height: 10px;
+
+              width: 200px;
+              margin: auto;
+              margin-left: -100px; /* 1/2 width */
+              margin-top: 20%;
+              left: 50%;
+
+              border-top-right-radius: 8px;
+              border-top-left-radius: 8px;
+              border-bottom-right-radius: 8px;
+              border-bottom-left-radius: 8px;
+              -moz-border-radius-topright: 8px;
+              -moz-border-radius-topleft: 8px;
+              -moz-border-radius-bottomright: 8px;
+              -moz-border-radius-bottomleft: 8px;
+
+              box-shadow: 0px 6px 12px rgba(0, 0, 0, .5);
+              -moz-box-shadow: 0px 6px 12px rgba(0,0,0, .5);
+              -webkit-box-shadow: 0px 6px 12px rgba(0,0,0, .5);
+
+              border: 3px solid rgba(0,0,0,0.4);
+              text-align: center;
+              color: #666;
+
+              display: none;
+            }
+
         </style>
     </head>
     <body>
@@ -988,15 +1024,16 @@
                     <div id="info">
                         <div class="exit">X</div>
                         <dl class="info-metadata">
-                            <dt>One</dt>
-                            <dd>Def</dd>
-                            <dt>Two</dt>
-                            <dd>Def</dd>
+                            <dt>Loading</dt>
+                            <dd>Metadata</dd>
                         </dl>
                     </div>
                     <div id="viewer-image">
                     </div>
                 </div>
+            </div>
+            <div id="redirect">
+              Sending to Flickr...
             </div>
             <div id="header">
                 <div id="header-title">
@@ -1011,7 +1048,7 @@
             <div id="content">
             </div>
             <div id="footer">
-                &copy; 2012 Charles Pina.
+                &copy; 2012-2013 Charles Piña.
             </div>
         </div>
     </body>
