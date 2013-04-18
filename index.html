@@ -56,9 +56,10 @@
                 $(".prev").click(function() { return swapImage(false); });
                 $(".next").click(function() { return swapImage(true); });
                 $(".info").click(function() { $("#info").toggle(); return false; });
-                $(".sizes").click(function() { $("#sizes").show(); });
-                $(window).keydown(function(event) {
+                $(".sizes").click(function() { $("#sizes").show(); return false; });
 
+                // key bindings
+                $(window).keydown(function(event) {
                     if(! $("#viewer-top-controls").is(":visible"))
                         return true;
 
@@ -380,7 +381,7 @@
                 var photoId = thumb.attr("assocId");
                 currentImage = parseInt(thumb.attr("photoIndex"));
 
-                $(".link").attr("href", "index.html?photo=" + photoId);
+                $(".link").attr("href", "http://flickr.com/photos/"+myId+"/"+photoId);
 
                 $("#viewer-image-container").css("margin-top", $(window).scrollTop() + 50);
                 $("#overlay").show();
@@ -467,6 +468,11 @@
                 display: none;
             }
 
+            #sizes {
+              display: none;
+              position: absolute;
+            }
+
             #info .exit {
                 cursor: pointer;
                 border-radius: 0px 5px 0px 5px;
@@ -486,7 +492,7 @@
             }
 
             #info {
-                display: block;
+                display: none;
                 position: fixed;
                 top: 50px;
                 right: 0;
