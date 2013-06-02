@@ -1,0 +1,15 @@
+<div class="set" pa-scroll="loadMoreImages()">
+    <h1>{{ title }}</h1>
+    <div class='column first-column'>
+        <pa-photo ng-repeat="photo in photos | filter:{column:1}">
+    </div>
+    <div class='column'>
+        <pa-photo ng-repeat="photo in photos | filter:{column:2}">
+    </div>
+    <div class='column'>
+        <pa-photo ng-repeat="photo in photos | filter:{column:3}">
+    </div>
+    <div class='column last-column'>
+        <pa-photo ng-repeat="photo in photos | filter:{column:4}">
+    </div>
+</div>

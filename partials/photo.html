@@ -1,0 +1,10 @@
+<div ng-click="photoClick(photo)"
+    ng-class="{photo:'image', set:'image-set'}[photo.type]">
+    <a href="{{ photo.link }}"
+        ><img 
+            ng-src="{{ photo.thumbImage.url }}"
+            width="{{ photo.dims.width }}"
+            height="{{ photo.dims.height }}"
+            ><ng-switch on="photo.type"
+            ><h2 ng-switch-when="set">{{ photo.title }}</h2></ng-switch></a>
+</div>
