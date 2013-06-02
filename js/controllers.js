@@ -92,8 +92,8 @@ function ListController($scope, $routeParams, $window, Flickr, PhotoEvents) {
                 column: shortestColumn+1, // columns 1-4, weird filter behavior prevents 0
                 bigImage: bigImage,
                 thumbImage: thumbImage,
-                sizesLink: Flickr.sizesLink(flickrId),
-                offsiteLink: Flickr.photoLink(flickrId),
+                sizes: Flickr.sizesLink(flickrId),
+                permalink: Flickr.photoLink(flickrId),
                 dims: dims,
                 flickrId: flickrId,
                 index: $scope.photos.length

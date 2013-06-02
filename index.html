@@ -13,8 +13,8 @@
                 <div id="viewer-top-controls" class="controls">
                     <ul>
                         <li><a class='prev' href="" ng-click="previousImage()"><img src="icons/resultset_previous.png"><span>previous</span></a></li>
-                        <li><a class='sizes' ng-href="{{ photo.sizesLink }"><img src="icons/magnifier.png"><span>sizes</span></a></li>
-                        <li><a class='link' ng-href="{{ photo.offsiteLink }}"><img src="icons/photo_link.png"><span>link</span></a></li>
+                        <li><a class='sizes' href="{{ photo.sizes }}"><img src="icons/magnifier.png"><span>sizes</span></a></li>
+                        <li><a class='link' href="{{ photo.permalink }}"><img src="icons/photo_link.png"><span>link</span></a></li>
                         <!--<li><a class='info' href="" ng-click="toggleMetadata()"><img src="icons/report_picture.png"><span>info</span></a></li>-->
                         <li class='last-control'><a class='next' href="" ng-click="nextImage()"><span>next</span><img src="icons/resultset_next.png"></a></li>
                     </ul>
@@ -34,13 +34,13 @@
             <div id="redirect">
               Sending to Flickr...
             </div>
-            <div id="header">
+            <div id="header" ng-controller='InfoController'>
                 <div id="header-title">
-                <a href="#/" class='back-to-all ng-cloak' ng-controller='InfoController' ng-show='shouldShowBackButton'> 
+                <a href="#/" class='back-to-all ng-cloak' ng-show='shouldShowBackButton'> 
                     <div class='arrow'></div><span>Back to Photo Stream</span>
                 </a>
                 <h1>
-                    <a href="#/">ask charl.es / photos</a>
+                    <a href="#/">http:// ask charl.es</a>
                 </h1>
                 </div>
             </div>
