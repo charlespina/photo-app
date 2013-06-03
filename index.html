@@ -15,15 +15,19 @@
                         <li><a class='prev' href="" ng-click="previousImage()"><img src="icons/resultset_previous.png"><span>previous</span></a></li>
                         <li><a class='sizes' href="{{ photo.sizes }}"><img src="icons/magnifier.png"><span>sizes</span></a></li>
                         <li><a class='link' href="{{ photo.permalink }}"><img src="icons/photo_link.png"><span>link</span></a></li>
-                        <!--<li><a class='info' href="" ng-click="toggleMetadata()"><img src="icons/report_picture.png"><span>info</span></a></li>-->
+                        <li><a class='info' href="" ng-click="toggleMetadata()"><img src="icons/report_picture.png"><span>info</span></a></li>
                         <li class='last-control'><a class='next' href="" ng-click="nextImage()"><span>next</span><img src="icons/resultset_next.png"></a></li>
                     </ul>
                 </div>
                 <div id="viewer-image-container" ng-click="hideViewer()">
-                    <div id="info" ng-show="metadataVisible">
-                        <div class="exit" ng-click="toggleMetadata()">X</div>
-                        <dl class="info-metadata">
-                            <pa-metadata name="{{ item.name }}" value="{{ item.value }}" ng-repeat="item in metadata">
+                    <div id="info" ng-show="metadataVisible" pa-draggable>
+                        <div class="exit" ng-click="toggleMetadata($event)">X</div>
+                        <dl class="info-metadata" ng-init="tagNames={FNumber: 'F-Number', ExposureTime: 'Exp. Time', DateCreated: 'Date Taken'}">
+                            <span ng-show="!photo.metadata"><dt>Loading...</dt><dd></dd></span>
+                            <span ng-repeat="item in photo.metadata">
+                                <dt>{{ tagNames[item.tag] || item.tag }}</dt>
+                                <dd>{{ item.value }}</dd>
+                            </span> 
                         </dl>
                     </div>
                     <div id="viewer-image" ng-class="{loading:loading}" ng-style="viewerStyle" pa-animate="viewerAnimatedStyle">
@@ -51,6 +55,7 @@
             </div>
         </div>
         <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js"></script>
         <script type='text/javascript' src='http://code.angularjs.org/1.1.5/angular.min.js'></script>
         <script type='text/javascript' src='http://code.angularjs.org/1.1.5/angular-resource.min.js'></script>
         <script type='text/javascript' src='js/app.js'></script>

@@ -63,6 +63,35 @@ function ListController($scope, $routeParams, $window, Flickr, PhotoEvents) {
     $scope.photoClick = function(photo) {
         if (!photo.bigImage) return;
         PhotoEvents.chosePhoto(photo);
+        $scope.getPhotoMetadata(photo);
+    };
+
+    $scope.$on('changedPhoto', function(e, photo) {
+        $scope.getPhotoMetadata(photo);
+    });
+
+    $scope.getPhotoMetadata = function(photo) {
+        if (photo.metadata) return;
+
+        var order = [ "Model", "FNumber", "ExposureTime", "ISO", "Lens", "DateCreated" ];
+        Flickr.getPhotoMetadata({photo_id: photo.flickrId}, function(data) {
+            photo.metadata = [];
+            for(var i in order) {
+                var tag = order[i];
+                for(var e in data.photo.exif) {
+                    var meta = data.photo.exif[e];
+                    //$scope.$apply(
+                        if (tag == meta.tag) {
+                            photo.metadata.push({
+                                tag: meta.tag,
+                                value: meta.raw._content
+                            });
+                        }
+                    //);
+                }
+            }
+            console.log(photo.metadata);
+        });
     };
 
     $scope.sortImages = function(data) {
@@ -226,7 +255,9 @@ function ViewerController($scope, PhotoEvents) {
         $scope.visible = false;
     };
 
-    $scope.toggleMetadata = function() {
+    $scope.toggleMetadata = function($event) {
+        if ($event) $event.stopPropagation();
+
         $scope.metadataVisible = !$scope.metadataVisible;
     };
 
@@ -243,6 +274,7 @@ function ViewerController($scope, PhotoEvents) {
             && $scope.photos[index].bigImage)
         {
             $scope.viewPhoto($scope.photos[index]);
+            PhotoEvents.changedPhoto($scope.photos[index]);
         } else {
             $scope.hideViewer();
         }
@@ -265,6 +297,10 @@ angular.module('photoapp')
 
         service.chosePhoto = function(photo) {
             $rootScope.$broadcast('chosePhoto', photo);
+        };
+
+        service.changedPhoto = function(photo) {
+            $rootScope.$broadcast('changedPhoto', photo);
         };
 
         return service;

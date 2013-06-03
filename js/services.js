@@ -17,6 +17,14 @@ angular.module('flickrService', ['ngResource']).
                 },
                 isArray: false
             },
+            getPhotoMetadata : {
+                method: 'GET',
+                params: {
+                    method: "flickr.photos.getExif"
+                    // photo_id:
+                },
+                isArray: false
+            },
             getPhotosetInfo : {
                 method: 'GET',
                 params: {

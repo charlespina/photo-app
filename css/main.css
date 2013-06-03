@@ -84,12 +84,13 @@ body {
 }
 
 .info-metadata dt {
-    color: #ccc;
+    color: white;
     clear: left;
     float: left;
 }
 
 .info-metadata dd {
+    color: #ccc;
     font-weight: bold;
 }
 

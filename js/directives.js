@@ -7,17 +7,6 @@ angular.module('photoappDirectives', [])
             replace: true
         };
     })
-    .directive('paMetadata', function() {
-        return {
-            template: '<span><dt>{{ name }}</dt><dd>{{ value }}</dd></span>',
-            restrict: 'E',
-            replace: true,
-            scope: {
-                name: '@name',
-                value: '@value'
-            }
-        };
-    })
     .directive('paAnimate', function() {
         // animate to a given css state (JSON css attributes)
         // optionally, use the following form to set a starting state
@@ -56,4 +45,12 @@ angular.module('photoappDirectives', [])
             };
             $window.on('scroll', handleScroll);
         }
+    })
+    .directive('paDraggable', function() {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                $(element).draggable();
+            }
+        };
     });
