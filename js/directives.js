@@ -45,13 +45,13 @@ angular.module('photoappDirectives', [])
             });
         };
     })
-    .directive('paScroll', function($window) {
+    .directive('paScroll', function($window, $document) {
         // call the code specified in the pa-scroll attribute when scrolling
         // to the bottom of the page.
         return function(scope, element, attrs) {
             $window = angular.element($window);
             var handleScroll = function() {
-                if ($window.height() > ($(document).height() - $window.height() - $window.scrollTop())) 
+                if ($window.height() > ($document.height() - $window.height() - $window.scrollTop())) 
                     scope.$eval(attrs.paScroll);
             };
             $window.on('scroll', handleScroll);
