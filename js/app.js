@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('photoapp', ['flickrService', 'photoappDirectives']).
+angular.module('photoapp', ['flickrService', 'soundcloudService', 'utilDirectives', 'photoappDirectives']).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/', { 

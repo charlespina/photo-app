@@ -20,7 +20,7 @@
                     </ul>
                 </div>
                 <div id="viewer-image-container" ng-click="hideViewer()">
-                    <div id="info" ng-show="metadataVisible" pa-draggable>
+                    <div id="info" ng-show="metadataVisible" util-draggable>
                         <div class="exit" ng-click="toggleMetadata($event)">X</div>
                         <dl class="info-metadata" ng-init="tagNames={FNumber: 'F-Number', ExposureTime: 'Exp. Time', DateCreated: 'Date Taken'}">
                             <span ng-show="!photo.metadata"><dt>Loading...</dt><dd></dd></span>
@@ -30,8 +30,8 @@
                             </span> 
                         </dl>
                     </div>
-                    <div id="viewer-image" ng-class="{loading:loading}" ng-style="viewerStyle" pa-animate="viewerAnimatedStyle">
-                        <img ng-src="{{ image }}" ng-style="imageStyle" pa-animate="imageAnimatedStyle" ng-show="!loading">
+                    <div id="viewer-image" ng-class="{loading:loading}" ng-style="viewerStyle" util-animate="viewerAnimatedStyle">
+                        <img ng-src="{{ image }}" ng-style="imageStyle" util-animate="imageAnimatedStyle" ng-show="!loading">
                     </div>
                 </div>
             </div>
@@ -59,8 +59,10 @@
         <script type='text/javascript' src='http://code.angularjs.org/1.1.5/angular.min.js'></script>
         <script type='text/javascript' src='http://code.angularjs.org/1.1.5/angular-resource.min.js'></script>
         <script type='text/javascript' src='js/app.js'></script>
-        <script type='text/javascript' src='js/services.js'></script>
-        <script type='text/javascript' src='js/directives.js'></script>
-        <script type='text/javascript' src='js/controllers.js'></script>
+        <script type='text/javascript' src='js/util/directives.js'></script>
+        <script type='text/javascript' src='js/photo/services.js'></script>
+        <script type='text/javascript' src='js/photo/directives.js'></script>
+        <script type='text/javascript' src='js/photo/controllers.js'></script>
+        <script type='text/javascript' src='js/sound/services.js'></script>
     </body>
 </html>
