@@ -560,3 +560,7 @@ a .metadata h3 {
 .ng-cloak {
     display: none;
 }
+
+.album iframe {
+    margin: auto;
+}

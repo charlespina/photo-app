@@ -1,4 +1,4 @@
-function ListController($scope, $routeParams, $window, Flickr, PhotoEvents) {
+angular.module('photoapp').controller('ListController', function($scope, $routeParams, $window, Flickr, PhotoEvents) {
     $scope.title = $routeParams.setId ? "" : "Photo Stream";
     //$scope.where = "photos";
     $scope.nextPage = 1;
@@ -200,9 +200,9 @@ function ListController($scope, $routeParams, $window, Flickr, PhotoEvents) {
         $scope.loadSets();
         $scope.loadMoreImages();
     }
-}
+});
 
-function ViewerController($scope, PhotoEvents) {
+angular.module('photoapp').controller('ViewerController', function ($scope, PhotoEvents) {
     $scope.metadataVisible = false;
     $scope.visible = false;
     $scope.photos = [];
@@ -279,29 +279,12 @@ function ViewerController($scope, PhotoEvents) {
             $scope.hideViewer();
         }
     }
-}
+});
 
-function InfoController($scope, $location) {
+angular.module('photoapp').controller('InfoController', function($scope, $location) {
     $scope.shouldShowBackButton = false;
     $scope.$watch(function() {return $location.path()}, function(path) {
         $scope.shouldShowBackButton = path != "/";
     });
-};
+});
 
-angular.module('photoapp')
-    .factory('PhotoEvents', function ($rootScope) {
-        var service = {};
-        service.photosChanged = function(photos) {
-            $rootScope.$broadcast('photosChanged', photos);
-        };
-
-        service.chosePhoto = function(photo) {
-            $rootScope.$broadcast('chosePhoto', photo);
-        };
-
-        service.changedPhoto = function(photo) {
-            $rootScope.$broadcast('changedPhoto', photo);
-        };
-
-        return service;
-    });

@@ -1,4 +1,4 @@
-angular.module('photoappDirectives', [])
+angular.module('photoapp')
     .directive('paPhoto', function() {
         // load the photo partial, replacing <pa-photo> element
         return {

@@ -1,14 +1,21 @@
 'use strict';
 
-angular.module('photoapp', ['flickrService', 'soundcloudService', 'utilDirectives', 'photoappDirectives']).
+angular.module('soundapp', ['soundcloudService']) 
+angular.module('photoapp', ['flickrService', 'utilDirectives']);
+angular.module('siteapp',  ['photoapp', 'soundapp']).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider
-            .when('/', { 
+            .when('/sound', {
+                templateUrl: 'partials/sound.html',
+                controller: 'SoundController',
+                reloadOnSearch: false
+            })
+            .when('/photos', { 
                 templateUrl: 'partials/list.html', 
                 controller: 'ListController',
                 reloadOnSearch: false // prevents ?foo=bar url's from reloading controllers
             })
-            .when('/set/:setId', {
+            .when('/photos/set/:setId', {
                 templateUrl: 'partials/list-set.html',
                 controller: 'ListController',
                 reloadOnSearch: false
