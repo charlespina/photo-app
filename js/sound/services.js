@@ -1,10 +1,8 @@
-angular.module('soundcloudService', ['ngResource']).
-    factory('SoundCloud', function($resource) {
-        var clientId = "8d8fb5c7c78345fe3ce7a24cd996596e";
-        var artist = "charles-pina";
-        var soundcloud = $resource('http://api.soundcloud.com/users/:artist/:endpoint.:format', {
-                client_id: clientId,
-                artist: artist,
+angular.module('soundcloudService', ['ngResource', 'config']).
+    factory('SoundCloud', function($resource, Config) {
+        var soundcloud = $resource('http://api.soundcloud.com/users/:user/:endpoint.:format', {
+                client_id: Config.SoundCloud.client_id,
+                user: Config.SoundCloud.user,
             },
             {
                 albums : {

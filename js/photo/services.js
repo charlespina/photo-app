@@ -1,9 +1,8 @@
-angular.module('flickrService', ['ngResource']).
-    factory('Flickr', function($resource) {
-        var userId = "63533647@N05";
+angular.module('flickrService', ['ngResource', 'config']).
+    factory('Flickr', function($resource, Config) {
         var flickr = $resource('http://api.flickr.com/services/rest/', { 
-            user_id: userId,
-            api_key: "163b09ce67a3c84a8aef760016ea26f6",
+            user_id: Config.Flickr.user_id,
+            api_key: Config.Flickr.api_key,
             format: "json",
             nojsoncallback: 1
         }, 
@@ -51,11 +50,11 @@ angular.module('flickrService', ['ngResource']).
         });
 
         flickr.photoLink = function(flickrId) {
-            return "http://flickr.com/photos/"+userId+"/"+flickrId;
+            return "http://flickr.com/photos/"+Config.Flickr.user_id+"/"+flickrId;
         };
 
         flickr.sizesLink = function(flickrId) {
-            return "http://flickr.com/photos/"+userId+"/"+flickrId+"/sizes/l/";
+            return "http://flickr.com/photos/"+Config.Flickr.user_id+"/"+flickrId+"/sizes/l/";
         };
 
         return flickr;
