@@ -241,10 +241,20 @@ body {
     padding: 0 20px;
 }
 
+#content h1, .album h2, .album p {
+    color: #666;
+    padding-left: 20px;
+}
+
+.album h2 {
+    font-size: 1.2em;
+    width: 1160px;
+    background-color: #eee;
+}
+
 #content h1 {
     font-size: 1.2em;
-    color: #333;
-    width: 560px;
+    width: 1160px;
     background-color: rgba(255,255,255, 0.4);
     padding: 10px 0;
     padding-left: 20px;
@@ -253,8 +263,8 @@ body {
 }
 
 #header {
-    margin-top: 0;
-    height: 100px;
+    margin: 0;
+    padding: 0;
     background-color: #808080;
     position: relative;
 }
@@ -265,25 +275,30 @@ body {
     padding: 0;
     bottom: 0;
     display: inline-block;
-    font-size: 75px;
     width: 100%;
     color: rgba(255, 255, 255, 0.5);
 }
 
 #header-title {
-    text-align: right;
+    text-align: left;
     width: 1160px;
     padding: 0 20px;
-    margin: auto;
+    margin: 0 auto;
 }
 
 #header h1 a, #header h1 a:visited, #header h1 a:active {
+    font-size: 30px;
+    height: 45px;
+    padding: 0;
+    margin: 0;
     color: rgba(255, 255, 255, 0.5);
     text-decoration: none;
 }
 
 #header h1 a:hover {
     color: rgba(255, 255, 255, 1.0);
+    background-image: -webkit-radial-gradient(center bottom, 140px 40px, #aaa, #808080);  
+    background-image: radial-gradient(center bottom, 140px 40px, #aaa, #808080);  
 }
 
 .left-arrow, .right-arrow {
@@ -343,21 +358,71 @@ body {
 
 #nav {
     display: block;
-    position: absolute;
-    bottom: 20px;
-    right: 30px;
+    background-color: white;
 }
 
 #nav ul {
-    margin: 0;
+    text-align: right;
+    margin: auto;
+    max-width: 1160px;
+    min-width: 600px;
+    display: block;
     list-style: none;
     padding: 0;
 }
 
 #nav li {
+    display: inline-block;
     margin: 0;
     padding: 0;
     text-indent: 0;
+    height: 30px;
+}
+
+#nav a, #nav a:visited, #nav a:active {
+    display: inline-block;
+    padding: 0 30px;
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+    color: #888;
+    font-weight: bold;
+}
+
+#nav a:hover {
+    background-color: #fff;
+    border-bottom: 2px solid rgba(0, 128, 255, 0.5);
+    color: #08f;
+    /* background-image: radial-gradient(center center, circle cover, black, blue, green, red, purple, white); */
+    /* background-image: -webkit-radial-gradient(center top, 80px 40px, rgba(0, 0.5, 1.0, 0.9), #ccc);  */
+    background-image: -webkit-radial-gradient(center bottom, 60px 40px, rgba(0, 128, 255, 0.25), rgba(0, 128, 255, 0.0));  
+}
+
+.curved {
+    position:relative;
+}
+
+.curved:before,
+.curved:after {
+    content:"";
+    position:absolute;
+    z-index:-2;
+}
+
+.curved:before {
+    width: 1160px;
+    margin: auto;
+    -webkit-box-shadow:0 0 15px rgba(0,0,0,0.2);
+    -moz-box-shadow:0 0 15px rgba(0,0,0,0.2);
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+    -moz-border-radius:10px / 100px;
+    border-radius:10px / 100px;
+    top:50%;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
 }
 
 #site {
@@ -365,13 +430,18 @@ body {
 }
 
 #content {
-    width: 1200px;
+    max-width: 1200px;
+    min-width: 600px;
     margin: auto;
 }
 
 .set {
     clear: both;
     padding-bottom: -30px;
+}
+
+.set h1 a, .set h1 a:visited {
+    color: #666;
 }
 
 .image, .image-set {
@@ -562,5 +632,22 @@ a .metadata h3 {
 }
 
 .album iframe {
+    margin: auto;
+}
+
+.album {
+    margin-bottom: 30px;
+}
+
+.album span {
+    display: none;
+}
+
+.note {
+    font-family: courier;
+    font-weight: normal;
+    background-color: white;
+    width: 840px;
+    padding: 20px;
     margin: auto;
 }

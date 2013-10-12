@@ -182,7 +182,7 @@ angular.module('photoapp').controller('ListController', function($scope, $routeP
                     id: set.id,
                     type: 'set',
                     column: (count % 4)+1,
-                    link: '#/set/'+set.id,
+                    link: '#/photos/set/'+set.id,
                     thumbImage: { url: photoUrl(set.farm, set.server, set.primary, set.secret) },
                     dims: { height: 240, 
                             width: 240 },
@@ -190,6 +190,7 @@ angular.module('photoapp').controller('ListController', function($scope, $routeP
                 });
                 count++;
             }
+            PhotoEvents.photosChanged($scope.photos);
         });
     };
 

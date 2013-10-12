@@ -40,6 +40,15 @@ angular.module('soundcloudService', ['ngResource', 'config']).
                         width: 300,
                         height: 300
                     }
+                },
+                default : {
+                    method: "GET",
+                    params: {
+                        format: "json",
+                        iframe: false,
+                        width: 300,
+                        height: 300
+                    }
                 }
             }
         );

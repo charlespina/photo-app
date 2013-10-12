@@ -1,4 +1,14 @@
 <div class="albums">
-    <h1>Albums</h1>
-    <p>A few of the albums I've played on over the years.</p>
+    <h1>Music</h1>
+    <p class='note'>I've been lucky to be involved with a number of musical projects over
+    the years, playing primarily as a drummer, and more recently as a guitarist. The
+    genres span a range from Indie (Nine Volt Classic, and recordings at
+    Lafayette) to Pop Rock (The Arcade). If you are feeling adventurous, there
+    are even a few poorly recorded tracks from a metal band I was in for a few
+    months. Without further ado, here's some music. I hope you enjoy. - Charles
+    </p>
+    <div ng-repeat="album in albums" class="album">
+        <h2>{{ album.title }}</h2>
+        <div id="embed-{{ album.id }}"></div>
+    </div>
 </div>
