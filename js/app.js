@@ -1,24 +1,26 @@
 'use strict';
 
-angular.module('soundapp', ['soundcloudService']) 
+angular.module('videoapp', ['vimeoService']);
+angular.module('soundapp', ['soundcloudService']);
 angular.module('photoapp', ['flickrService', 'utilDirectives']);
-angular.module('siteapp',  ['photoapp', 'soundapp']).
+angular.module('siteapp',  ['photoapp', 'soundapp', 'videoapp']).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider
+            .when('/video', {
+                templateUrl: 'partials/video.html'
+            })
             .when('/sound', {
                 templateUrl: 'partials/sound.html',
                 controller: 'SoundController',
-                reloadOnSearch: false
             })
             .when('/photos', { 
                 templateUrl: 'partials/list.html', 
                 controller: 'ListController',
-                reloadOnSearch: false // prevents ?foo=bar url's from reloading controllers
+                // reloadOnSearch: false // prevents ?foo=bar url's from reloading controllers
             })
             .when('/photos/set/:setId', {
                 templateUrl: 'partials/list-set.html',
                 controller: 'ListController',
-                reloadOnSearch: false
             })
             .otherwise({ redirectTo: '/'});
     }]);
