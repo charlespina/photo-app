@@ -6,6 +6,9 @@ angular.module('photoapp', ['flickrService', 'utilDirectives']);
 angular.module('siteapp',  ['photoapp', 'soundapp', 'videoapp']).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider
+            .when('/', {
+                templateUrl: 'partials/home.html'
+            })
             .when('/video', {
                 templateUrl: 'partials/video.html'
             })
