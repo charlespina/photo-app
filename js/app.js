@@ -7,7 +7,8 @@ angular.module('siteapp',  ['photoapp', 'soundapp', 'videoapp']).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'partials/home.html'
+                templateUrl: 'partials/list.html',
+                controller: 'ListController'
             })
             .when('/video', {
                 templateUrl: 'partials/video.html'
